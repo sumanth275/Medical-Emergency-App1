@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MedAlert - Fast, reliable medical emergency assistance. Activate SOS, share location, manage patient info and emergency contacts instantly.">
+    <title>MedAlert — Emergency Medical Assistance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="top">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">🚑</span>
+                <span class="logo-text">Med<span class="logo-accent">Alert</span></span>
+            </div>
+            <nav>
+                <a href="#home" class="nav-link active" id="nav-home">Home</a>
+                <a href="#patient" class="nav-link" id="nav-patient">Patient</a>
+                <a href="#contacts" class="nav-link" id="nav-contacts">Contacts</a>
+                <a href="#location" class="nav-link" id="nav-location">Location</a>
+            </nav>
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span class="status-text">System Active</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO / SOS SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Emergency Response System
+                </div>
+                <h1 class="hero-title">
+                    Medical Emergency<br>
+                    <span class="hero-accent">Assistance Hub</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Instant emergency activation, real-time location sharing,<br>
+                    and complete patient info — all in one place.
+                </p>
+
+                <!-- SOS Button -->
+                <div class="sos-container">
+                    <button class="sos-button" id="sosBtn" onclick="activateSOS()">
+                        <span class="sos-ring"></span>
+                        <span class="sos-ring sos-ring-2"></span>
+                        <span class="sos-inner">
+                            <span class="sos-icon">🚨</span>
+                            <span class="sos-label">ACTIVATE SOS</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div id="sosMessage" class="alert-message alert-danger hidden" role="alert">
+                    🚨 Emergency SOS Activated! Help is on the way.
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="quick-actions">
+                    <a href="tel:112" class="action-btn action-call" id="callBtn">
+                        <span>📞</span> Call 112
+                    </a>
+                    <a href="tel:108" class="action-btn action-ambulance" id="ambulanceBtn">
+                        <span>🚑</span> Call 108
+                    </a>
+                    <button class="action-btn action-location" id="shareLocationBtn" onclick="getLocation()">
+                        <span>📍</span> Share Location
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Available</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">&lt;5min</div>
+                    <div class="stat-label">Response Time</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">112</div>
+                    <div class="stat-label">Emergency No.</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">108</div>
+                    <div class="stat-label">Ambulance</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PATIENT INFO SECTION -->
+        <section id="patient" class="content-section">
+            <div class="section-header">
+                <div class="section-icon">👤</div>
+                <div>
+                    <h2 class="section-title">Patient Information</h2>
+                    <p class="section-subtitle">Save your medical profile for faster emergency response</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="patientName">Full Name</label>
+                        <input type="text" id="patientName" class="form-input" placeholder="Enter patient name" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="patientAge">Age</label>
+                        <input type="number" id="patientAge" class="form-input" placeholder="Age" min="0" max="150">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="patientGender">Gender</label>
+                        <select id="patientGender" class="form-input form-select">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bloodGroup">Blood Group</label>
+                        <select id="bloodGroup" class="form-input form-select">
+                            <option value="">Select Blood Group</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label class="form-label" for="allergies">Known Allergies</label>
+                        <input type="text" id="allergies" class="form-input" placeholder="e.g. Penicillin, Peanuts, Latex">
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label class="form-label" for="medCondition">Medical Conditions</label>
+                        <input type="text" id="medCondition" class="form-input" placeholder="e.g. Diabetes, Hypertension, Asthma">
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label class="form-label" for="currentMeds">Current Medications</label>
+                        <input type="text" id="currentMeds" class="form-input" placeholder="e.g. Metformin, Aspirin">
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn btn-primary" id="savePatientBtn" onclick="savePatient()">
+                        <span>💾</span> Save Patient Profile
+                    </button>
+                    <button class="btn btn-ghost" id="clearPatientBtn" onclick="clearPatient()">
+                        <span>🗑️</span> Clear
+                    </button>
+                </div>
+
+                <div id="patientSaveMsg" class="alert-message alert-success hidden">
+                    ✅ Patient information saved successfully!
+                </div>
+            </div>
+        </section>
+
+        <!-- EMERGENCY CONTACTS SECTION -->
+        <section id="contacts" class="content-section">
+            <div class="section-header">
+                <div class="section-icon">📞</div>
+                <div>
+                    <h2 class="section-title">Emergency Contacts</h2>
+                    <p class="section-subtitle">Add people to be notified in case of emergency</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="contactName">Contact Name</label>
+                        <input type="text" id="contactName" class="form-input" placeholder="Full Name" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contactRelation">Relationship</label>
+                        <select id="contactRelation" class="form-input form-select">
+                            <option value="">Select Relation</option>
+                            <option>Parent</option>
+                            <option>Spouse</option>
+                            <option>Sibling</option>
+                            <option>Child</option>
+                            <option>Friend</option>
+                            <option>Colleague</option>
+                            <option>Doctor</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-full">
+                        <label class="form-label" for="contactPhone">Phone Number</label>
+                        <input type="tel" id="contactPhone" class="form-input" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn btn-primary" id="addContactBtn" onclick="addContact()">
+                        <span>➕</span> Add Contact
+                    </button>
+                </div>
+
+                <div id="contactList" class="contact-list"></div>
+            </div>
+        </section>
+
+        <!-- LOCATION SECTION -->
+        <section id="location" class="content-section">
+            <div class="section-header">
+                <div class="section-icon">📍</div>
+                <div>
+                    <h2 class="section-title">Emergency Location</h2>
+                    <p class="section-subtitle">Share your precise coordinates with emergency services</p>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="location-display" id="locationDisplay">
+                    <div class="location-placeholder">
+                        <div class="location-placeholder-icon">📍</div>
+                        <p>Click the button below to get your current location</p>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn btn-primary" id="getLocationBtn" onclick="getLocation()">
+                        <span>📍</span> Get My Location
+                    </button>
+                    <button class="btn btn-ghost hidden" id="openMapBtn" onclick="openMap()">
+                        <span>🗺️</span> Open in Maps
+                    </button>
+                </div>
+
+                <div id="locationMsg" class="alert-message hidden"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">🚑 MedAlert</div>
+            <p class="footer-text">© 2026 MedAlert — Medical Emergency Assistance System</p>
+            <p class="footer-note">⚠️ In a real emergency, always contact official emergency services immediately.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

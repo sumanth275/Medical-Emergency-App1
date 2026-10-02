@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medical Emergency</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #222;
+        }
+
+        header {
+            background: #d90429;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .sos {
+            width: 100%;
+            background: #d90429;
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .sos:hover {
+            background: #a80320;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #1976d2;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #125ca5;
+        }
+
+        .success {
+            margin-top: 15px;
+            padding: 12px;
+            background: #dff6e4;
+            color: #166534;
+            border-radius: 8px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🚑 Medical Emergency</h1>
+        <p>Quick Emergency Assistance</p>
+    </header>
+
+    <div class="container">
+
+        <!-- SOS -->
+        <div class="card">
+            <h2>🚨 Emergency SOS</h2>
+
+            <button class="sos" onclick="emergencySOS()">
+                🚨 ACTIVATE SOS
+            </button>
+
+            <div id="sosMessage" class="success">
+                Emergency alert activated!
+            </div>
+        </div>
+
+        <!-- Patient Details -->
+        <div class="card">
+            <h2>👤 Patient Information</h2>
+
+            <input type="text" id="patientName"
+                   placeholder="Patient Name">
+
+            <input type="text" id="bloodGroup"
+                   placeholder="Blood Group">
+
+            <input type="text" id="allergies"
+                   placeholder="Allergies">
+
+            <input type="text" id="medicalCondition"
+                   placeholder="Medical Condition">
+
+            <button class="button" onclick="saveDetails()">
+                💾 Save Patient Details
+            </button>
+
+            <div id="saveMessage" class="success">
+                Patient details saved!
+            </div>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="card">
+            <h2>📞 Emergency Contact</h2>
+
+            <input type="text"
+                   placeholder="Emergency Contact Name">
+
+            <input type="tel"
+                   placeholder="Phone Number">
+
+            <a href="tel:112">
+                <button class="button">
+                    📞 Call Emergency 112
+                </button>
+            </a>
+        </div>
+
+        <!-- Location -->
+        <div class="card">
+            <h2>📍 Current Location</h2>
+
+            <button class="button" onclick="getLocation()">
+                📍 Get My Location
+            </button>
+
+            <p id="location"></p>
+        </div>
+
+    </div>
+
+    <footer>
+        Medical Emergency Assistance System
+    </footer>
+
+
+    <script>
+
+        function emergencySOS() {
+
+            document.getElementById("sosMessage").style.display = "block";
+
+            alert("🚨 EMERGENCY SOS ACTIVATED!");
+
+        }
+
+
+        function saveDetails() {
+
+            document.getElementById("saveMessage").style.display = "block";
+
+        }
+
+
+        function getLocation() {
+
+            const locationText =
+                document.getElementById("location");
+
+            if (navigator.geolocation) {
+
+                locationText.innerHTML =
+                    "Getting your location...";
+
+                navigator.geolocation.getCurrentPosition(
+
+                    function(position) {
+
+                        const latitude =
+                            position.coords.latitude;
+
+                        const longitude =
+                            position.coords.longitude;
+
+                        const mapURL =
+                            "https://www.google.com/maps?q="
+                            + latitude + "," + longitude;
+
+                        locationText.innerHTML =
+                            "Latitude: " + latitude +
+                            "<br>Longitude: " + longitude +
+                            "<br><br>" +
+                            "<a href='" + mapURL +
+                            "' target='_blank'>" +
+                            "Open Location in Google Maps" +
+                            "</a>";
+
+                    },
+
+                    function() {
+
+                        locationText.innerHTML =
+                            "Unable to get location.";
+
+                    }
+
+                );
+
+            } else {
+
+                locationText.innerHTML =
+                    "Geolocation is not supported.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

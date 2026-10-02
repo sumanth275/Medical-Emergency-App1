@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MedAlert - Emergency System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🚑 MedAlert</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#patient">Patient</a>
+            <a href="#contacts">Contacts</a>
+            <a href="#location">Location</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HOME -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <h1>Medical Emergency Assistance</h1>
+
+                <p>
+                    Get emergency assistance quickly when you need it.
+                </p>
+
+                <button class="sos-button" onclick="activateSOS()">
+                    🚨 SOS
+                </button>
+
+                <div class="emergency-buttons">
+
+                    <a href="tel:112" class="emergency-call">
+                        📞 Call 112
+                    </a>
+
+                    <button onclick="getLocation()" class="location-button">
+                        📍 Share Location
+                    </button>
+
+                </div>
+
+                <p id="sosMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATIENT -->
+
+        <section id="patient" class="section">
+
+            <h2>👤 Patient Information</h2>
+
+            <div class="card">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Patient Name"
+                >
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Age"
+                >
+
+                <select id="blood">
+                    <option value="">Select Blood Group</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+
+                <input
+                    type="text"
+                    id="allergy"
+                    placeholder="Allergies"
+                >
+
+                <input
+                    type="text"
+                    id="condition"
+                    placeholder="Medical Condition"
+                >
+
+                <button onclick="savePatient()">
+                    💾 Save Information
+                </button>
+
+                <p id="patientMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACTS -->
+
+        <section id="contacts" class="section">
+
+            <h2>📞 Emergency Contacts</h2>
+
+            <div class="card">
+
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Contact Name"
+                >
+
+                <input
+                    type="tel"
+                    id="contactPhone"
+                    placeholder="Phone Number"
+                >
+
+                <button onclick="saveContact()">
+                    ➕ Add Emergency Contact
+                </button>
+
+                <div id="contactList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOCATION -->
+
+        <section id="location" class="section">
+
+            <h2>📍 Emergency Location</h2>
+
+            <div class="card location-card">
+
+                <button onclick="getLocation()">
+                    📍 Get My Current Location
+                </button>
+
+                <div id="locationResult">
+                    Location not available.
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 MedAlert | Medical Emergency Assistance
+        </p>
+
+        <p>
+            In a real emergency, contact appropriate emergency services.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

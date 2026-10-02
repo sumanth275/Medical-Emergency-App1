@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: #d90429;
+    color: white;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffd6dc;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #ffe5e9
+    );
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 19px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* ================= SOS BUTTON ================= */
+
+.sos-button {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 10px solid #ffb3bd;
+    background: #d90429;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 35px rgba(217, 4, 41, 0.4);
+    transition: 0.3s;
+    animation: pulse 2s infinite;
+}
+
+.sos-button:hover {
+    transform: scale(1.08);
+    background: #b80323;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 25px rgba(217, 4, 41, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(217, 4, 41, 0);
+    }
+}
+
+/* ================= EMERGENCY BUTTONS ================= */
+
+.emergency-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.emergency-call,
+.location-button,
+button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background: #1976d2;
+    transition: 0.3s;
+}
+
+.emergency-call {
+    background: #222;
+}
+
+.emergency-call:hover {
+    background: #000;
+}
+
+.location-button {
+    background: #1976d2;
+}
+
+.location-button:hover {
+    background: #125ca5;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+}
+
+/* ================= INPUTS ================= */
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #d90429;
+    box-shadow: 0 0 0 3px rgba(217, 4, 41, 0.1);
+}
+
+/* ================= CARD BUTTON ================= */
+
+.card button {
+    background: #d90429;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.card button:hover {
+    background: #b80323;
+}
+
+/* ================= MESSAGES ================= */
+
+#sosMessage,
+#patientMessage,
+#locationResult {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    color: #166534;
+}
+
+/* ================= CONTACT LIST ================= */
+
+#contactList {
+    margin-top: 20px;
+}
+
+#contactList p {
+    background: #f1f5f9;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* ================= LOCATION ================= */
+
+.location-card {
+    text-align: center;
+}
+
+#locationResult {
+    margin-top: 25px;
+    min-height: 50px;
+}
+
+#locationResult a {
+    color: #1976d2;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#locationResult a:hover {
+    text-decoration: underline;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 30px 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 30px 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .sos-button {
+        width: 160px;
+        height: 160px;
+        font-size: 30px;
+    }
+
+    .section {
+        padding: 50px 15px;
+    }
+
+    .section h2 {
+        font-size: 25px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .emergency-buttons {
+        flex-direction: column;
+    }
+
+    .emergency-call,
+    .location-button {
+        width: 100%;
+        text-align: center;
+    }
+}
